@@ -1,6 +1,6 @@
 {
     'name': 'Website Sale Variant Auto Switch',
-    'version': '18.0.1.0.0',
+    'version': '17.0.1.0.0',
     'category': 'Website/Website',
     'summary': 'Automatically switch to valid product variants instead of showing errors',
     'description': """
