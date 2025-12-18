@@ -1,0 +1,65 @@
+{
+    'name': 'Website Sale Variant Auto Switch',
+    'version': '19.0.1.0.0',
+    'category': 'Website/Website',
+    'summary': 'Automatically switch to valid product variants instead of showing errors',
+    'description': """
+        Automatic Variant Switching
+        ============================
+
+        Enhances the eCommerce user experience by automatically switching to valid
+        product combinations instead of showing "This combination does not exist" errors.
+
+        Key Features:
+        -------------
+        • **Amazon-like variant selection**: Automatically switches to the closest valid
+          combination when customers select incompatible attributes
+
+        • **Preserves customer intent**: Intelligent algorithm keeps as many of the
+          customer's original selections as possible
+
+        • **Works with all variant creation modes**: Supports 'always' variants,
+          'dynamic' variants (when created), and respects 'never' (no_variant) attributes
+
+        • **Seamless integration**: Works with Odoo's built-in exclusion indicators and
+          all standard themes without custom styling
+
+        • **Zero configuration**: Activates automatically after installation
+
+        • **Safe implementation**: Only affects interactive product pages, never touches
+          orders or historical data
+
+        Perfect for stores with:
+        ------------------------
+        • Products with multiple attribute combinations
+        • Complex variant exclusion rules ("Exclude for" settings)
+        • Archived variants to disable certain combinations
+        • High variant count requiring advanced UX
+
+        Results:
+        --------
+        ✓ Reduced cart abandonment
+        ✓ Improved conversion rates
+        ✓ Professional customer experience matching major eCommerce platforms
+    """,
+    'author': 'Codemarchant',
+    'website': 'https://codemarchant.com',
+    'support': 'support@codemarchant.com',
+    'depends': ['website_sale'],
+    'data': [
+    ],
+    'assets': {
+        'web.assets_frontend': [
+            'website_sale_variant_auto_switch/static/src/js/website_sale.js',
+        ],
+    },
+    'images': [
+        'static/description/banner.png',
+    ],
+    'price': 99.00,
+    'currency': 'EUR',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+    'license': 'OPL-1',
+}
