@@ -1,0 +1,322 @@
+<section class="oe_container">
+    <div class="row">
+        <div class="col-12 text-center mt-5 mb-5">
+            <h2 class="text-primary display-4">Website Sale Variant Auto Switch</h2>
+            <h3 class="text-muted font-weight-light">Improve customer experience with automatic variant switching</h3>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-body p-5 text-center">
+                    <h2 class="text-primary mb-4">Overview</h2>
+                    <p class="lead">
+                        This module enhances the product variant selection experience in your Odoo eCommerce store by automatically
+                        switching to valid product combinations instead of showing frustrating <strong>"This combination does not exist"</strong> error messages.
+                    </p>
+                    <p class="text-muted">
+                        Similar to how major eCommerce platforms like Amazon handle variant selection, this module intelligently guides
+                        customers to available product combinations, reducing cart abandonment and improving conversion rates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container bg-light py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-primary">Key Features</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="fa fa-refresh fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Automatic Variant Switching</h4>
+                    <p class="card-text text-muted">
+                        When a customer selects an invalid combination of product attributes, the module automatically
+                        switches to the closest valid combination that matches their intent.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="fa fa-eye fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Works with Odoo's Visual Indicators</h4>
+                    <p class="card-text text-muted">
+                        Works seamlessly with Odoo's built-in visual indicators that show unavailable options,
+                        automatically switching to valid alternatives when customers select them anyway.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Preserves User Intent</h4>
+                    <p class="card-text text-muted">
+                        The automatic switching algorithm prioritizes customer preferences by choosing the closest
+                        matching valid variant based on their selections.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="fa fa-paint-brush fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Theme Compatible</h4>
+                    <p class="card-text text-muted">
+                        Works seamlessly with all Odoo themes without requiring custom styling.
+                        The module integrates naturally with your existing website design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-primary">How It Works</h2>
+        </div>
+    </div>
+    
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <img src="screenshot_1_select_unavailable.png" class="img-fluid shadow rounded" alt="Product page showing unavailable variant options">
+        </div>
+        <div class="col-lg-6">
+            <h3 class="text-primary mb-3">Product Page with Variant Selection</h3>
+            <p class="text-muted">
+                In this example, the customer has selected <strong>"Aluminium"</strong> for the Legs attribute. Notice
+                how the <strong>"Black"</strong>
+                option is crossed out, indicating it's not available with the current selections. This behavior is part
+                of Odoo out of the box, using either the "Exclude for" setting or archived variant configurations.
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-row-reverse">
+        <div class="col-lg-6">
+            <img src="screenshot_2_after_variant_switch.png" class="img-fluid shadow rounded" alt="Product page after variant switching">
+        </div>
+        <div class="col-lg-6">
+            <h3 class="text-primary mb-3">Automatic Variant Switching in Action</h3>
+            <p class="text-muted">
+                When the customer clicks the <strong>"Black"</strong> color attribute, instead of showing a
+                "This combination does not exist" error, the module automatically switches to the closest valid variant that includes Black.
+                The algorithm favors keeping as many of the current selections as possible. In this case, the <strong>"Aluminium"</strong> option is
+                automatically switched to <strong>"Steel"</strong> while Black is preserved.
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <img src="screenshot_3_exclude_for_config.png" class="img-fluid shadow rounded" alt="Shop page with variant attribute filters">
+        </div>
+        <div class="col-lg-6">
+            <h3 class="text-primary mb-3">Enhanced Shop Page Experience</h3>
+            <p class="text-muted">
+                Works with standard out-of-the-box Odoo product configurations. Use the "Exclude for" setting or archive
+                variants to disable certain attribute combinations.
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-row-reverse">
+        <div class="col-lg-6">
+            <img src="screenshot_4_combination_does_not_exist.png" class="img-fluid shadow rounded"
+                 alt="combination does not exist page">
+        </div>
+        <div class="col-lg-6">
+            <h3 class="text-primary mb-3">No more "This combination does not exist."</h3>
+            <p class="text-muted">
+                <strong>Limitations:</strong> Automatic switching works for all variant types,
+                but cannot help when selecting an attribute value in the following circumstances:
+            </p>
+            <ul class="text-muted">
+                <li>Attributes with variant creation set to "Never" (no_variant)</li>
+                <li>Dynamic attributes where no variant has been created yet for the
+                    selected value (no existing variants to switch to)
+                </li>
+                <li>When no valid combination exists at all for your selection</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<section class="oe_container bg-light py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-primary">Benefits</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">Reduced Cart Abandonment</h5>
+                    <p class="text-muted">Customers are less likely to leave when they don't encounter confusing error messages.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">Improved User Experience</h5>
+                    <p class="text-muted">Smooth, intuitive variant selection similar to major eCommerce platforms.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">Higher Conversion Rates</h5>
+                    <p class="text-muted">Making it easier for customers to find valid products increases sales.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">Professional Appearance</h5>
+                    <p class="text-muted">Your store behaves like established eCommerce platforms customers trust.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">No Configuration Required</h5>
+                    <p class="text-muted">Works automatically after installation with your existing product variants.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="media">
+                <div class="mr-3 text-success">
+                    <i class="fa fa-check-circle fa-2x"></i>
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">Safe & Reliable</h5>
+                    <p class="text-muted">Only affects interactive product pages, not orders or historical data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-primary">Technical Details</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-3 text-center mb-4">
+            <div class="p-3">
+                <i class="fa fa-server fa-4x text-primary mb-3"></i>
+                <h4 class="h5">Backend Controller</h4>
+                <p class="text-muted small">Intercepts variant combination requests and intelligently determines the closest valid combination</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center mb-4">
+            <div class="p-3">
+                <i class="fa fa-code fa-4x text-primary mb-3"></i>
+                <h4 class="h5">Frontend JavaScript</h4>
+                <p class="text-muted small">Automatically updates the user interface to reflect the valid combination selected by the backend</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center mb-4">
+            <div class="p-3">
+                <i class="fa fa-cogs fa-4x text-primary mb-3"></i>
+                <h4 class="h5">Intelligent Algorithm</h4>
+                <p class="text-muted small">Preserves as many of the customer's original selections as possible when finding a valid alternative</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center mb-4">
+            <div class="p-3">
+                <i class="fa fa-check fa-4x text-primary mb-3"></i>
+                <h4 class="h5">Seamless Integration</h4>
+                <p class="text-muted small">Works with Odoo's built-in exclusion styling to provide a smooth experience
+                    without requiring custom CSS</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container bg-light py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h2 class="text-primary">Installation & Compatibility</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="m-0">Installation Steps</h4>
+                </div>
+                <div class="card-body">
+                    <ol class="pl-3">
+                        <li class="mb-2">Download and install the module through the Odoo Apps interface</li>
+                        <li class="mb-2">The module activates automatically for all products with variants</li>
+                        <li class="mb-2">No configuration or setup required</li>
+                        <li class="mb-2">Compatible with all standard Odoo themes</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h2 class="text-primary mb-3">Get Started Today</h2>
+            <p class="lead text-muted mb-5">
+                Install this module to provide your customers with a smoother, more professional
+                product selection experience that matches the best eCommerce platforms.
+            </p>
+            <div class="text-center">
+                <i class="fa fa-shopping-cart fa-5x text-primary"></i>
+            </div>
+        </div>
+    </div>
+</section>
