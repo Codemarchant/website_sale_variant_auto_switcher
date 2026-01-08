@@ -56,7 +56,7 @@
     'images': [
         'static/description/banner.png',
     ],
-    'price': 49.00,
+    'price': 99.00,
     'currency': 'EUR',
     'installable': True,
     'auto_install': False,
