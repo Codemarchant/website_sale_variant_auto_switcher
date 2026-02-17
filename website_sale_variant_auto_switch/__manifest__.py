@@ -65,10 +65,10 @@
     'images': [
         'static/description/banner.png',
     ],
-    'price': 99.00,
+    'price': 0,
     'currency': 'EUR',
     'installable': True,
     'auto_install': False,
     'application': False,
-    'license': 'OPL-1',
+    'license': 'LGPL-3',
 }
