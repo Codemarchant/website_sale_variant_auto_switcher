@@ -31,15 +31,16 @@ class AutoSwitchVariantController(WebsiteSaleVariantController):
             combination_recordset = request.env['product.template.attribute.value'].browse(combination)
 
             # Perform automatic switching if needed
-            switched_combination_recordset, switched_product_id = product_template._find_auto_switch_combination(
+            switched_combination_recordset, _switched_product_id = product_template._find_auto_switch_combination(
                 combination_recordset,
                 product_id,
                 changed_ptav_id
             )
 
-            # Update kwargs with switched values
+            # Update kwargs with switched combination. Keep the original product_id: core resolves
+            # the variant from the combination, and flags `no_product_change` (skipping the image
+            # refresh) when the returned variant equals the product_id it was given.
             kwargs['combination'] = switched_combination_recordset.ids
-            kwargs['product_id'] = switched_product_id
 
         # Get combination info from parent
         result = super().get_combination_info_website(*args, **kwargs)
