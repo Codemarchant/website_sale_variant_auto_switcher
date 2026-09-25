@@ -19,7 +19,6 @@ class AutoSwitchVariantController(WebsiteSaleVariantController):
         product_template_id = kwargs.get('product_template_id')
         product_id = kwargs.get('product_id')
         combination = kwargs.get('combination', [])
-        parent_combination = kwargs.get('parent_combination', [])
         changed_ptav_id = kwargs.get('changed_ptav_id', False)
 
         switched_combination_recordset = None
@@ -30,12 +29,10 @@ class AutoSwitchVariantController(WebsiteSaleVariantController):
 
             # Convert combination IDs to recordset
             combination_recordset = request.env['product.template.attribute.value'].browse(combination)
-            parent_combination_recordset = request.env['product.template.attribute.value'].browse(parent_combination)
 
             # Perform automatic switching if needed
             switched_combination_recordset, switched_product_id = product_template._find_auto_switch_combination(
                 combination_recordset,
-                parent_combination_recordset,
                 product_id,
                 changed_ptav_id
             )

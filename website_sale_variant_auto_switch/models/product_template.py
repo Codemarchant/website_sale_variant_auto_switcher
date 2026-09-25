@@ -5,7 +5,7 @@ import operator
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    def _find_auto_switch_combination(self, combination, parent_combination=False, product_id=False, changed_ptav_id=False):
+    def _find_auto_switch_combination(self, combination, product_id=False, changed_ptav_id=False):
         """
         Find the best valid combination when the requested one is invalid.
         This preserves user intent by scoring variants based on shared attributes.
@@ -14,12 +14,11 @@ class ProductTemplate(models.Model):
 
         Args:
             combination: The requested combination (recordset)
-            parent_combination: Parent combination if applicable (recordset)
             product_id: Current product variant ID (0 for dynamic variants)
             changed_ptav_id: ID of the PTAV that was just changed (helps identify user intent for dynamic variants)
         """
         # If already valid, no need to switch
-        if not combination or self._is_combination_possible(combination, parent_combination):
+        if not combination or self._is_combination_possible(combination):
             return combination, product_id
 
         # Separate variant-creating from no_variant attributes
@@ -89,14 +88,14 @@ class ProductTemplate(models.Model):
                     variant_attributes = variant.product_template_attribute_value_ids
 
                     # Check variant combo is valid (ignoring no_variant for now)
-                    if not self._is_combination_possible(variant_attributes, parent_combination, ignore_no_variant=True):
+                    if not self._is_combination_possible(variant_attributes, ignore_no_variant=True):
                         continue
 
                     # Add back no_variant attributes
                     complete_combination = variant_attributes | custom_attributes
 
                     # Check FULL combination is valid (including no_variant exclusions)
-                    if self._is_combination_possible(complete_combination, parent_combination):
+                    if self._is_combination_possible(complete_combination):
                         return complete_combination, variant.id
 
         # If no valid switch found, return original

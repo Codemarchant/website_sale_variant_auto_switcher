@@ -1,6 +1,6 @@
 {
     'name': 'Website Sale Variant Auto Switcher',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
     'category': 'Website/Website',
     'summary': '''Automatically switch to valid product variants instead of showing errors.
     combination not found, invalid combination, this combination does not exist, variant error, variant not available,
@@ -11,7 +11,7 @@
     exclude for, exclusion rules, archived variants, dynamic variants, variant matrix, attribute exclusion,
     woocommerce alternative, magento alternative, prestashop alternative, bigcommerce alternative,
     odoo ecommerce, odoo webshop, odoo variant, odoo product, odoo website sale, odoo shop,
-    odoo19, odoo 19, odoo18, odoo 18, odoo17, odoo 17''',
+    odoo20, odoo 20, odoo19, odoo 19, odoo18, odoo 18, odoo17, odoo 17''',
     'description': """
         Automatic Variant Switching
         ============================

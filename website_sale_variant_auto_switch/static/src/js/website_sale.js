@@ -1,19 +1,16 @@
-/** @odoo-module **/
-
 import { patch } from '@web/core/utils/patch';
-import { WebsiteSale } from '@website_sale/interactions/website_sale';
-import VariantMixin from '@website_sale/js/variant_mixin';
+import { ProductPage } from '@website_sale/interactions/product_page';
 import wSaleUtils from '@website_sale/js/website_sale_utils';
 
 /**
  * Automatic Variant Switching - Auto-switch to valid combinations
  *
- * Extends WebsiteSale to automatically switch to valid product variants
+ * Extends ProductPage to automatically switch to valid product variants
  * instead of showing "This combination does not exist" errors.
  */
-patch(WebsiteSale.prototype, {
+patch(ProductPage.prototype, {
     /**
-     * Store the last changed event for use in _getOptionalCombinationInfoParam
+     * Store the last changed event for use in _getOptionalCombinationInfoParams
      * @override
      */
     _getCombinationInfo(ev) {
@@ -26,8 +23,8 @@ patch(WebsiteSale.prototype, {
      * Hook to pass changed_ptav_id to backend for automatic switching
      * This is the cleanest way - uses Odoo's built-in extension point
      */
-    _getOptionalCombinationInfoParam(product) {
-        const params = super._getOptionalCombinationInfoParam(...arguments);
+    _getOptionalCombinationInfoParams(product) {
+        const params = super._getOptionalCombinationInfoParams(...arguments);
 
         // Extract the changed PTAV ID from the last event
         let changedPtavId = null;
@@ -53,8 +50,10 @@ patch(WebsiteSale.prototype, {
      * @override
      */
     _onChangeCombination(ev, parent, combination) {
-        super._onChangeCombination(...arguments);
+        const result = super._onChangeCombination(...arguments);
+        // Run synchronously: core calls _checkExclusions without awaiting _onChangeCombination
         this._onChangeCombinationAutoSwitch(ev, parent, combination);
+        return result;
     },
 
     /**
@@ -101,8 +100,8 @@ patch(WebsiteSale.prototype, {
                     }
                 });
 
-                // Sync active classes for all display types following Odoo 19's patterns
-                // Pills: onChangePillsAttribute (website_sale.js:515-530)
+                // Sync active classes for all display types following Odoo 20's patterns
+                // Pills: onChangePillsAttribute (product_page.js)
                 parent.querySelectorAll('.o_variant_pills').forEach(el => {
                     if (el.matches(':has(input:checked)')) {
                         el.classList.add('active', 'border-primary', 'text-primary-emphasis', 'bg-primary-subtle');
@@ -111,11 +110,11 @@ patch(WebsiteSale.prototype, {
                     }
                 });
 
-                // Color: onChangeColorAttribute (website_sale.js:480-491)
+                // Color: onChangeAttribute (product_page.js)
                 parent.querySelectorAll('.css_attribute_color').forEach(el => {
                     el.classList.toggle('active', el.matches(':has(input:checked)'));
 
-                    // Update attribute value text (line 486-490 of base code)
+                    // Update attribute value text
                     const checkedInput = el.querySelector('input:checked');
                     if (checkedInput) {
                         const attrValueEl = el.closest('.variant_attribute')?.querySelector('.attribute_value');
@@ -125,13 +124,15 @@ patch(WebsiteSale.prototype, {
                     }
                 });
 
-                // Image: onChangeImageAttribute (website_sale.js:498-513)
-                parent.querySelectorAll('label[name="o_wsale_attribute_image_selector"]').forEach(el => {
+                // Image / Thumbnail: onChangeAttribute (product_page.js)
+                parent.querySelectorAll(
+                    'label[name="o_wsale_attribute_image_selector"], label[name="o_wsale_attribute_thumbnail_selector"]'
+                ).forEach(el => {
                     const input = el.querySelector('input');
                     if (input && input.checked) {
                         el.classList.add('active');
 
-                        // Update attribute value text (line 508-512 of base code)
+                        // Update attribute value text
                         const attrValueEl = input.closest('[name="variant_attribute"]')?.querySelector('[name="attribute_value"]');
                         if (attrValueEl && input.dataset.valueName) {
                             attrValueEl.innerText = input.dataset.valueName;
@@ -161,24 +162,5 @@ patch(WebsiteSale.prototype, {
 
         // Let Odoo handle invalid styling with correct combination
         super._checkExclusions(parent, variantOnlyCombination);
-    },
-
-    /**
-     * @override
-     * Fix Odoo core bug: parent scope too broad, querySelector finds wrong inputs.
-     *
-     * Issue: parent = .js_main_product contains hidden inputs (product_category_id value="1")
-     * When disabling Steel (ptav value="1"), `input[value="1"]` finds hidden input first ❌
-     *
-     * Solution: Narrow scope to ul.js_add_cart_variants before calling super
-     * Future-proof: If Odoo fixes selector, this still works via fallback
-     */
-    _disableInput(parent, attributeValueId, excludedBy, attributeNames, productName) {
-        // Narrow scope to variant container to avoid finding unrelated inputs with same value
-        const variantContainer = parent.querySelector('ul.js_add_cart_variants');
-        const scopedParent = variantContainer || parent; // Fallback if container not found
-
-        // Call original with scoped parent
-        super._disableInput(scopedParent, attributeValueId, excludedBy, attributeNames, productName);
     },
 });
